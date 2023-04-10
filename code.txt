@@ -1,0 +1,73 @@
+dosseg
+.model small
+.stack 100h
+.data
+ 
+msg1 db 'WHEN YOU CHANGE $'
+msg2 db 'THE WAY YOU LOOK AT $'
+msg3 db 'THINGS ... $'
+msg4 db 'THE THINGS YOU LOOK AT $'
+msg5 db 'CHANGE ... $'
+.code
+ 
+main proc	;--------------------------------------------------------------------------
+ 
+mov ax,@data
+mov ds,ax
+ 
+mov dx,offset msg1 ;MSG1
+mov ah,9 ;PRINT
+int 21h
+ 
+call enterkey
+call enterkey
+ 
+mov dx,offset msg2 ;MSG2
+mov ah,9 ;PRINT
+int 21h
+ 
+call enterkey
+call enterkey
+ 
+mov dx,offset msg3 ;MSG3
+mov ah,9 ;PRINT
+int 21h
+ 
+call enterkey
+call enterkey
+ 
+mov dx,offset msg4 ;MSG4
+mov ah,9 ;PRINT
+int 21h
+ 
+call enterkey
+call enterkey
+ 
+mov dx,offset msg5 ;MSG5
+mov ah,9 ;PRINT
+int 21h
+ 
+ 
+call enterkey
+call enterkey
+ 
+ 
+mov ah,4ch
+int 21h
+ 
+main endp	;---------------------------------------------------------------------------------
+ 
+enterkey proc ;----------------------------------------------------------------------------
+ 
+mov dx,10 ;NEW LINE FEED
+mov ah,2 ;PRINT
+int 21h
+ 
+mov dx,13 ;CARRIAGE RETURN
+mov ah,2 ;PRINT
+int 21h
+ 
+ret
+ 
+enterkey endp ;----------------------------------------------------------------------------
+end main
